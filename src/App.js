@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import NavMenu from './components/nav-menu/nav-menu.component';
+import SearchMenu from './components/search-menu/search-menu.component';
+import MenuCategories from './components/menu-categories/menu-categories.component';
+import RestaurantList from './components/restaurant-list/restaurant-list.component';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='nav-menu-left'>
+        <NavMenu/>
+      </div>
+      <div className='right-wrapper'>
+        <div className='search-menu-top'>
+          <SearchMenu/>
+        </div>
+        <div className='menu-category-listing'>
+          <MenuCategories/>
+        </div>
+        <div className='restaurant-listing'>
+          <RestaurantList/>
+        </div>
+      </div>
     </div>
   );
 }
