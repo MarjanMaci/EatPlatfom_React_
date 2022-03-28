@@ -6,7 +6,15 @@
     }
 
     .restaurant-list-overflow{
-        overflow: auto;
+        overflow-x: auto;
         margin-top: 5vh;
+        display: flex;
+        flex-direction: row;
+        gap: 3vw;
+    }
+    
+    a{
+        text-decoration: none;
+        color: black;
     }
 }

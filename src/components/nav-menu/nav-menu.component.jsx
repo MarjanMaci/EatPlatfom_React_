@@ -1,5 +1,7 @@
 import React from 'react'
-import ReactSvgMenu from '../assets/icons8-restaurant-menu-50.png'
+import list from '../assets/list.svg'
+import reservation from '../assets/reservation.svg'
+import squares from '../assets/4-squares.svg'
 import Maci from '../assets/maci.jpg'
 import './nav-menu.styles.scss'
 
@@ -15,15 +17,15 @@ const NavMenu = () => (
         </div>
         <ul className='ul-nav-menu'>
             <li>
-                <img src={ReactSvgMenu} alt="" />
+                <img src={list} alt="" />
                 <h3>Мени</h3>
             </li>
             <li>
-                <img src={ReactSvgMenu} alt="" />
+                <img src={reservation} alt="" />
                 <h3>Резервации</h3>
             </li>
             <li>
-                <img src={ReactSvgMenu} alt="" />
+                <img src={squares} alt="" />
                 <h3>Мој профил</h3>
             </li>
         </ul>

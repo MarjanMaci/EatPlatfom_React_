@@ -4,20 +4,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
-
-    input{
+    .input-wrapper{
+        display: flex;
+        align-items: center;
+        margin-left: 5vw;
+        border-bottom: 1px solid #313131;
         height: 30%;
         width: 30%;
-        margin: 2%;
-        margin-left: 5vw;
-        
+        img{
+            height: 80%;
+        }
+
+        input{
+            width: 100%;
+            margin: 2%;
+            border: 0;
+            margin-left: 1vw;
+        }
     }
 
     button{
-        height: 30%;
+        height: 60%;
+        width: 10%;
         margin: 2%;
-        background-color: black;
+        background-color: #313131;
+        border-radius: 20px 40px;
+        font-weight: bold;
         color: white;
+        margin-right: 5vw;
+        cursor: pointer;
     }
 }

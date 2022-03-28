@@ -29,6 +29,8 @@
         display:flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        text-align: center;
 
         h2{
             margin: 0%;
@@ -45,12 +47,26 @@
         flex-direction: column;
         gap: 3vh;
         padding: 0;
+        width: 100%;
         li{
             list-style: none;
             display: flex;
             flex-direction: row;
-            gap: 2vw;
+            align-items: center;
             color: rgb(131, 130, 130);
+
+            &:first-child{
+                color: white
+            }
+            &:first-child img{
+                filter:  brightness(0) invert(1);
+            }
+
+            img{
+                height: 30%;
+                width: 30%;
+                filter: invert(53%) sepia(22%) saturate(9%) hue-rotate(37deg) brightness(92%) contrast(99%);
+            }
         }
     }
 }
