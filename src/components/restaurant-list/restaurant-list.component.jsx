@@ -7,7 +7,7 @@ const RestaurantList = (props) => (
                 <h1>Нови Ресторани</h1>
                 <div className='restaurant-list-overflow'>
                     {
-                        props.data.map(r => <RestaurantItem key={r.id} data={r}/>)
+                        props.data.map(r => <RestaurantItem key={r.id} data={r} onEdit={props.onEdit} onDelete={props.onDelete}/>)
                     }
                 </div>
             </div>

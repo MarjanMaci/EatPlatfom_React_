@@ -1,11 +1,15 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useRoutes, Router } from 'react-router-dom';
 import homeRepository from '../src/repo-axios/homeRepository'
 import NavMenu from './components/nav-menu/nav-menu.component';
 import SearchMenu from './components/search-menu/search-menu.component';
 import MenuCategories from './components/menu-categories-nav/menu-categories.component';
 import RestaurantList from './components/restaurant-list/restaurant-list.component';
 import MenuCategoriesList from './components/menu-categories-list/menu-categories-list';
+import MealsByRestaurantList from './components/meals-by-restaurant-list/meals-by-restaurant-list';
+import RestaurantAdd from './components/restaurant-add-edit/restaurant-add';
+import RestaurantEdit from './components/restaurant-add-edit/restaurant-edit';
+import Meal from './components/meal/meal.component';
 import React from 'react';
 
 class App extends React.Component {
@@ -16,8 +20,15 @@ class App extends React.Component {
     this.state={
       restaurants:[], 
       menuCategories:[],
-      mealsByRestaurant:[]
+      selectedRestaurant:{}
     }
+  }
+
+  getRestaurant = (id) => {
+    homeRepository.fetchRestaurantById(id)
+    .then(data => {
+      this.setState({selectedRestaurant: data.data})
+    })
   }
 
   loadMenuEntries = () => {
@@ -34,11 +45,24 @@ class App extends React.Component {
     }, ()=>{console.log(this.state)})
   }
 
-  loadMealsByRestaurant = (restName) => {
-    console.log(restName)
-    homeRepository.fetchMealsByRestaurant(restName)
-    .then(data => {
-        this.setState({mealsByRestaurant:data.data})
+  addRestaurant = (name,address,opens,closes,avgOrderComp,img) => {
+    homeRepository.addRestaurant(name,address,opens,closes,avgOrderComp,img)
+    .then(()=>{
+      this.loadRestaurants();
+    })
+  }
+
+  editRestaurant = (id,name,address,opens,closes,avgOrderComp,img) => {
+    homeRepository.editRestaurant(id,name,address,opens,closes,avgOrderComp,img)
+    .then(()=>{
+      this.loadRestaurants();
+    })
+  }
+  
+  deleteRestaurant = (id) => {
+    homeRepository.deleteRestaurant(id)
+    .then(()=>{
+      this.loadRestaurants();
     })
   }
 
@@ -49,25 +73,22 @@ class App extends React.Component {
 
   render(){
     return (
+      
         <div className="App">
-          <div className='nav-menu-left'>
+          <div className='left-wrapper'>
             <NavMenu/>
           </div>
           <div className='right-wrapper'>
-            <div className='search-menu-top'>
-              <SearchMenu/>
-            </div>
-            <div className='menu-category-listing'>
-              <MenuCategories data={this.state.menuCategories}/>
-            </div>
-            <div className='restaurant-listing'>
+            <SearchMenu/> 
               <Routes>
-                <Route path='/' element={<RestaurantList data={this.state.restaurants}/>}/>
-                <Route path='/menucategories/:id' element={<MenuCategoriesList data={this.state.menuCategories}/>}/>
-                <Route path='/restaurant/:id' element={<MenuCategoriesList data={this.state.mealsByRestaurant} onMount={this.loadMealsByRestaurant} />} />
+                <Route path='/' element={<><MenuCategories data={this.state.menuCategories}/><RestaurantList data={this.state.restaurants} onEdit={this.getRestaurant} onDelete={this.deleteRestaurant}/></>}/>
+                <Route path='/menucategories/:id' element={<><MenuCategories data={this.state.menuCategories}/><MenuCategoriesList data={this.state.menuCategories}/></>}/>
+                <Route path='/restaurant/:id' element={<><MenuCategories data={this.state.menuCategories}/><MealsByRestaurantList /></>} />
+                <Route path='/restaurant/add' element={<RestaurantAdd onAddProduct={this.addRestaurant} />} />
+                <Route path='/restaurant/edit/:id' element={<RestaurantEdit onEditRestaurant={this.editRestaurant} restaurant={this.state.selectedRestaurant} />} />
+                <Route path='/meal/:id' element={<Meal/>} />
               </Routes>
             </div>
-          </div>
         </div>
     );
   }

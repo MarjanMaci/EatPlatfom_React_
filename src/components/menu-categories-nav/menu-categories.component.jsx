@@ -1,6 +1,6 @@
 import React from 'react'
 import './menu-categories.styles.scss'
-import CategoryItem from '../category-item/category-item.component';
+import CategoryItem from '../category-item-nav/category-item.component';
 
 const MenuCategories = (props) => (
     <div className='menu-categories'>

@@ -1,10 +1,10 @@
 import React from "react";
 import coverImg from '../assets/cover.jpg'
 import star from '../assets/price.svg'
-import './menu-categories-styles.scss'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import './meals-by-restaurant-item.styles.scss'
 
-const MenuCategoriesItem = (props) => (
+const MealsByRestaurantItem = (props) => (
     <Link to={`/meal/${props.data.id}`}>
         <div className="menu-categories-item">
             <img src={coverImg} alt="" />
@@ -19,4 +19,4 @@ const MenuCategoriesItem = (props) => (
     </Link>
 )
 
-export default MenuCategoriesItem;
+export default MealsByRestaurantItem;

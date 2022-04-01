@@ -1,6 +1,6 @@
 .search-menu{
     width: 100%;
-    height: 100%;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -13,8 +13,12 @@
         border-bottom: 1px solid #313131;
         height: 30%;
         width: 30%;
+        background-color: #313131;
+        padding: 1vh 0.5vw;
+        border-radius: 10px;
         img{
             height: 80%;
+            filter: brightness(0) invert(1);;
         }
 
         input{
@@ -22,6 +26,12 @@
             margin: 2%;
             border: 0;
             margin-left: 1vw;
+            background-color: #313131;
+            color: white;
+
+            &::placeholder{
+                color: white;
+            }
         }
     }
 

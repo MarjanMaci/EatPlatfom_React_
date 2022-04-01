@@ -8,7 +8,7 @@ const SearchMenu = () => (
             <img src={Search} alt="" />
             <input type="text" placeholder="Пребарувај..."/>
         </div>
-        <button>Најави се!</button>
+        <button>Одјави се!</button>
     </div>
 )
 
