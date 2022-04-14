@@ -18,9 +18,6 @@
     width: 80vw;
     height: 100vh;
     overflow: auto;
-    background-image: url("./components/assets/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .menu-category-listing{

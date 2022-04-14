@@ -10,6 +10,7 @@ import MealsByRestaurantList from './components/meals-by-restaurant-list/meals-b
 import RestaurantAdd from './components/restaurant-add-edit/restaurant-add';
 import RestaurantEdit from './components/restaurant-add-edit/restaurant-edit';
 import Meal from './components/meal/meal.component';
+import Cart from './components/cart/cart.component';
 import React from 'react';
 
 class App extends React.Component {
@@ -87,6 +88,7 @@ class App extends React.Component {
                 <Route path='/restaurant/add' element={<RestaurantAdd onAddProduct={this.addRestaurant} />} />
                 <Route path='/restaurant/edit/:id' element={<RestaurantEdit onEditRestaurant={this.editRestaurant} restaurant={this.state.selectedRestaurant} />} />
                 <Route path='/meal/:id' element={<Meal/>} />
+                <Route path='/cart' element={<Cart/>} />
               </Routes>
             </div>
         </div>

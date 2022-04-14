@@ -8,6 +8,7 @@ import './meal.styles.scss'
 const Meal = () => {
     let {id} = useParams();
     const [data, setData] = useState()
+    const [ammount, setAmmount] = useState(1)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
@@ -18,6 +19,14 @@ const Meal = () => {
             setIsLoading(false);
         })
     },[setData])
+
+    const moreAmmount = () => {setAmmount(ammount+1)}
+    const lessAmmount = () => {
+        if(ammount===1){
+            setAmmount(1)
+        }else
+            setAmmount(ammount-1)
+    }
 
         return(
             <div className="meal">
@@ -46,14 +55,14 @@ const Meal = () => {
                         <div className="kosnicka">
                             <div className="price-wrapper">
                                 <h2>Цена</h2>
-                                <h2>660ден</h2>
+                                <h2>{data.price*ammount}ден</h2>
                             </div>
                             <div className="kolicina">
                                 <h2>Избери количина</h2>
                                 <div className="kolicina-buttons">
-                                    <button>-</button>
-                                    <h1>3</h1>
-                                    <button>+</button>
+                                    <button onClick={lessAmmount}>-</button>
+                                    <h1>{ammount}</h1>
+                                    <button onClick={moreAmmount}>+</button>
                                 </div>
                                 <div className="naracka-buttons">
                                     <button className="first-one">Додади во кошничка</button>

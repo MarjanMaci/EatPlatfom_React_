@@ -1,0 +1,20 @@
+.info-holder{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-left: 2vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+    .wrapp-input{
+        margin-bottom: 1vh;
+    }
+
+    .change{
+        margin-left: auto;
+        padding-right: 2vw;
+        cursor: pointer;
+    }
+}
