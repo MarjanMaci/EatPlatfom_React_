@@ -1,10 +1,19 @@
 .cart{
     padding-left: 5vw;
+    display: flex;
+    flex-direction: row;
+    gap: 8vw;
 
     .left-wrapper{
         width: 40%;
         display: flex;
         flex-direction: column;
         gap: 4vh;
+    }
+
+    .right-wrapper{
+        width: 45%;
+        padding-left: 2vw;
+
     }
 }

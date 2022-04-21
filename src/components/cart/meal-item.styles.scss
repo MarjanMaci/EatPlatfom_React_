@@ -1,0 +1,40 @@
+.meal-item-cart{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    img{
+        width: 40%;
+        height: 75%;
+    }
+    .desc-m{
+        display: flex;
+        flex-direction: column;
+        height: 75%;
+        width: 35%;
+        justify-content: center;
+        h4,p{
+            margin: 1vh;
+        }
+    }
+    .kolicina-buttons{
+        display: flex;
+        flex-direction: row;
+        gap: 5%;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 75%;
+
+        button{
+            background-color: #313131;
+            color: white;
+            height: 20%;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            line-height: 20%; 
+        }
+    }
+}

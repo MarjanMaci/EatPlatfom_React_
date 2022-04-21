@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './cart.styles.scss'
 import InfoHolder from "./info-holder.component";
 import Payment from "./payment.component";
+import ItemsHolder from "./items-holder.component";
 
 const Cart = () => {
     const [change1, setChange1] = useState(false)
@@ -15,6 +16,10 @@ const Cart = () => {
                 <InfoHolder podatoci="Податоци" infoname="Марјан Марјановски " infonum="+38978252863" change={change1} onChange={()=>setChange1(!change1)}/>
                 <InfoHolder podatoci="Адреса" infoname="ул. Ѓорѓи Сугаре " infonum="бр.12" change={change2} onChange={()=>setChange2(!change2)}/>
                 <Payment/>
+            </div>
+            <div className="right-wrapper">
+                <h2>Производи</h2>
+                <ItemsHolder name="Sendvic" />
             </div>
         </div>
     )
