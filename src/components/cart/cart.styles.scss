@@ -9,6 +9,16 @@
         display: flex;
         flex-direction: column;
         gap: 4vh;
+        .naracka{
+            background-color: #313131;
+            color: white;
+            width: 15vw;
+            font-weight: bold;
+            font-size: large;
+            height: 5vh;
+            border-radius: 10px;
+            cursor: pointer;
+        }
     }
 
     .right-wrapper{

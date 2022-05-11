@@ -38,7 +38,30 @@ const homeRepository = {
     },
     fetchRestaurantById: (id) => {
         return axios.get(`/restaurant/get/${id}`)
+    },
+    login: (username, password) => {
+        return axios.post("/login", {
+            "username": username,
+            "password": password
+        });
+    },
+    getUserByUsername: (username) => {
+        return axios.get(`/home/${username}`);
+    },
+    addCartItem: (username,mealId,ammount) => {
+        console.log(username+","+mealId+","+ammount)
+        return axios.post('/cart/add', {
+            "username": username,
+            "mealId": mealId,
+            "ammount": ammount
+        });
+    },
+    getCartItems: () => {
+        return axios.get('/cart', 
+            { headers: {"Authorization" : localStorage.getItem('JWT')} }
+        )
     }
+
 }
 
 export default homeRepository;

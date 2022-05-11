@@ -11,6 +11,7 @@ import RestaurantAdd from './components/restaurant-add-edit/restaurant-add';
 import RestaurantEdit from './components/restaurant-add-edit/restaurant-edit';
 import Meal from './components/meal/meal.component';
 import Cart from './components/cart/cart.component';
+import Login from './components/login/login.component';
 import React from 'react';
 
 class App extends React.Component {
@@ -89,6 +90,7 @@ class App extends React.Component {
                 <Route path='/restaurant/edit/:id' element={<RestaurantEdit onEditRestaurant={this.editRestaurant} restaurant={this.state.selectedRestaurant} />} />
                 <Route path='/meal/:id' element={<Meal/>} />
                 <Route path='/cart' element={<Cart/>} />
+                <Route path="/login" element={<Login onLogin={this.loadRestaurants}/>}/>
               </Routes>
             </div>
         </div>

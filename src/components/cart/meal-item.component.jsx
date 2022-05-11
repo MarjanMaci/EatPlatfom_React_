@@ -1,16 +1,26 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './meal-item.styles.scss'
 import burger from '../assets/burger2.jpg'
 
 const MealItem = (props) => {
-    const [ammount, setAmmount] = useState(1)
-    const moreAmmount = () => {setAmmount(ammount+1)}
+    const [ammount, setAmmount] = useState(props.ammount)
+    let id=props.id
+
+    const moreAmmount = () => {
+        setAmmount(ammount+1);
+    }
     const lessAmmount = () => {
         if(ammount===1){
             setAmmount(1)
-        }else
+        }else{
             setAmmount(ammount-1)
+        }
     }
+
+    useEffect(()=>{
+        sessionStorage.setItem(props.whole.id,ammount)
+        props.onAmmountChange(props.whole.id)
+    },[ammount])
 
     return(
         <div className="meal-item-cart">

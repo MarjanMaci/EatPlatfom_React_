@@ -1,12 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import './items-holder.styles.scss'
 import MealItem from "./meal-item.component";
 
 const ItemsHolder = (props) => {
+
     return(
     <div className="items-wrapper">
-        <MealItem burgerName='Royal Burger' price='220'/>
-        <MealItem burgerName='Royal Burger' price='220'/>
+        {
+            props.items.map(c => <MealItem key={c.id} whole={c} id={c.id} onAmmountChange={props.ammountChange} burgerName={c.menuEntry.name} price={c.menuEntry.price} ammount={c.ammount}/>)
+        }
     </div>
     )
 }

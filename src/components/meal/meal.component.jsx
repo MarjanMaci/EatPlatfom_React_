@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import homeRepository from "../../repo-axios/homeRepository";
 import Burger from '../assets/burger.png'
 import IngredientItem from "./ingredients-div.component";
@@ -10,6 +10,7 @@ const Meal = () => {
     const [data, setData] = useState()
     const [ammount, setAmmount] = useState(1)
     const [isLoading, setIsLoading] = useState(true);
+    const navigator = useNavigate();
 
     useEffect(()=>{
         setIsLoading(true)
@@ -28,6 +29,13 @@ const Meal = () => {
             setAmmount(ammount-1)
     }
 
+    const addToCart = () => {
+        if(localStorage.getItem('user')!=null){
+            homeRepository.addCartItem(JSON.parse(localStorage.getItem('user')).username, data.id, ammount)
+            navigator('/cart')
+        }
+    }
+
         return(
             <div className="meal">
                 {isLoading ? (
@@ -42,7 +50,7 @@ const Meal = () => {
                     
                   </div>
                 ) : (
-                <div className="meal">
+                <div className="meall">
                     <div className="img-holder">
                         <h1>{data.name}</h1>
                         <img src={Burger} alt="" />
@@ -65,7 +73,7 @@ const Meal = () => {
                                     <button onClick={moreAmmount}>+</button>
                                 </div>
                                 <div className="naracka-buttons">
-                                    <button className="first-one">Додади во кошничка</button>
+                                    <button className="first-one" onClick={addToCart}>Додади во кошничка</button>
                                     <button className="second-one">Нарачај</button>
                                 </div>
                             </div>
