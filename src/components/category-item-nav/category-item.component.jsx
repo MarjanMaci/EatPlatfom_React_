@@ -1,6 +1,7 @@
 import React from "react";
 import './category-item.styles.scss'
 import { Link } from "react-router-dom";
+import Burger from '../assets/burger-svgrepo-com.svg'
 
 const CategoryItem = (props) => (
     <Link to={`/menucategories/${props.data.id}`}>

@@ -1,0 +1,18 @@
+.orders{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+    table{
+        tr{
+            margin: 1vh ;
+            td{
+                border: 1px solid black;
+                width: 15vw;
+                height: 5vh;
+                text-align: center;
+            }
+        }
+    }
+}

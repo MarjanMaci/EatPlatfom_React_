@@ -1,37 +1,60 @@
 import React, { useEffect, useState } from "react";
 import './cart.styles.scss'
+import { useNavigate } from "react-router-dom";
 import InfoHolder from "./info-holder.component";
 import homeRepository from "../../repo-axios/homeRepository";
 import Payment from "./payment.component";
 import ItemsHolder from "./items-holder.component";
 
 const Cart = () => {
+    const navigator = useNavigate();
     const [change1, setChange1] = useState(false)
     const [change2, setChange2] = useState(false)
     const [cartItems, setCartItems] = useState()
     const [isLoading, setIsLoading] = useState(true);
+    const [totalPrice, setTotalPrice] = useState(0)
 
     useEffect(()=>{
         setIsLoading(true)
-        homeRepository.getCartItems()
+        homeRepository.getCartItems(localStorage.getItem("cartId"))
         .then(pod => {
             setCartItems(pod.data)
             setIsLoading(false)
         })
     },[setCartItems])
 
+    useEffect(()=>{
+        totalPriceFunc()
+    },[cartItems])
+
+    const totalPriceFunc = () => {
+        let tp = 0;
+        if(cartItems){
+            for(const c of cartItems){
+                tp+=c.ammount*c.menuEntry.price
+            }
+            console.log("maci")
+            setTotalPrice(tp)
+        }
+    }
+
     let user = JSON.parse(localStorage.getItem('user'))
 
     const ammountChange = (p) => {
+        console.log(p)
         for(const c of cartItems){
             if(c.id==p){
-                c.ammount=sessionStorage.getItem(p)
+                c.ammount=sessionStorage.getItem(p+"")
+                totalPriceFunc()
             }
         }
     }
 
     const sendOrder = () => {
-        
+        let user = JSON.parse(localStorage.getItem("user"));
+        let userEmail = user.email;
+        homeRepository.makeAnOrder("", totalPrice, cartItems,userEmail)
+        navigator("/orders")
     }
 
     return(
@@ -58,7 +81,7 @@ const Cart = () => {
                     </div>
                     <div className="right-wrapper">
                         <h2>Производи</h2>
-                        <ItemsHolder ammountChange={ammountChange} items={cartItems} />
+                        <ItemsHolder ammountChange={ammountChange} items={cartItems} totalP={totalPrice} />
                     </div>
                 </>
                 )}

@@ -45,6 +45,18 @@ const homeRepository = {
             "password": password
         });
     },
+    register: ( username, password, repeatPassword, name, surname, address, email, phoneNumber) => {
+        return axios.post("/login/register", {
+            "username": username,
+            "password": password,
+            "repeatPassword": repeatPassword,
+            "name": name,
+            "surname": surname,
+            "address": address,
+            "email": email,
+            "phoneNumber": phoneNumber
+        });
+    },
     getUserByUsername: (username) => {
         return axios.get(`/home/${username}`);
     },
@@ -56,10 +68,25 @@ const homeRepository = {
             "ammount": ammount
         });
     },
-    getCartItems: () => {
-        return axios.get('/cart', 
-            { headers: {"Authorization" : localStorage.getItem('JWT')} }
-        )
+    getCartItems: (cartId) => {
+        return axios.get(`/cart/${cartId}`)
+    },
+    makeAnOrder: (discountCode, orderTotal, cartItems, userEmail) => {
+        return axios.post('/cart/order', {
+            "discountCode": discountCode,
+            "orderTotal": orderTotal+"",
+            "cartItems": cartItems,
+            "emailUser": userEmail,
+        })
+    },
+    findOrders: (userEmail) => {
+        return axios.get(`/cart?userEmail=${userEmail}`)
+    },
+    allOrders: () => {
+        return axios.get('/cart/allOrders');
+    },
+    changeStatus: (id) => {
+        return axios.get(`/cart/change/${id}`)
     }
 
 }

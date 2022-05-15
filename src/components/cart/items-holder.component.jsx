@@ -9,6 +9,7 @@ const ItemsHolder = (props) => {
         {
             props.items.map(c => <MealItem key={c.id} whole={c} id={c.id} onAmmountChange={props.ammountChange} burgerName={c.menuEntry.name} price={c.menuEntry.price} ammount={c.ammount}/>)
         }
+        <h2>Вкупно: {props.totalP}ден</h2>
     </div>
     )
 }

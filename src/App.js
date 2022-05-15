@@ -12,6 +12,9 @@ import RestaurantEdit from './components/restaurant-add-edit/restaurant-edit';
 import Meal from './components/meal/meal.component';
 import Cart from './components/cart/cart.component';
 import Login from './components/login/login.component';
+import Register from './components/login/register.component';
+import Order from './components/orders/order.component';
+import AdminOrders from './components/orders/admin-orders.component';
 import React from 'react';
 
 class App extends React.Component {
@@ -91,6 +94,9 @@ class App extends React.Component {
                 <Route path='/meal/:id' element={<Meal/>} />
                 <Route path='/cart' element={<Cart/>} />
                 <Route path="/login" element={<Login onLogin={this.loadRestaurants}/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/orders" element={<Order/>}/>
+                <Route path="/orderAdmin" element={<AdminOrders/>}/>
               </Routes>
             </div>
         </div>

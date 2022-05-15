@@ -31,7 +31,11 @@ const Meal = () => {
 
     const addToCart = () => {
         if(localStorage.getItem('user')!=null){
-            homeRepository.addCartItem(JSON.parse(localStorage.getItem('user')).username, data.id, ammount)
+            homeRepository.addCartItem(JSON.parse(localStorage.getItem('user')).username, data.id, ammount).then(
+                pod => {
+                    localStorage.setItem("cartId", pod.data.id)
+                }
+            )
             navigator('/cart')
         }
     }
